@@ -2,14 +2,19 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
-func main() {
-	count := 10
+func main(){
+	if len(os.Args) < 2 || len(os.Args) > 3 {
+		fmt.Println("usage: go run main. [string] [banner]")
+		return
+	}
 
-	for i := 0; i < count; i++ {
-		if i != 20 {
-			fmt.Println(count)
-		}
+	input := os.Args[1]
+	bannerName := "standard"
+
+	if len(os.Args) != 3 {
+		bannerName = 
 	}
 }
