@@ -5,10 +5,19 @@ import (
 )
 
 func main() {
-	text := "hello world"
+	var input string
+	fmt.Print("Enter your name: ")
+	fmt.Scan(&input)
 
-	for i := 0; i < len(text); i++ {
-		fmt.Printf("byte at %d:  and %c\n", i, text[2])
+	var index int
+	fmt.Print("Choose index: ")
+	fmt.Scan(&index)
+
+	switch index {
+	case 0:
+		fmt.Println(string(input[0]))
+	case 1:
+		fmt.Println(string(input[1]))
 	}
 
 }
