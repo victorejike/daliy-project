@@ -32,6 +32,6 @@ func main() {
 			continue
 		}
 
-		RenderLine(line, banner)
+		RenderLine(line, banner) //this a
 	}
 }
