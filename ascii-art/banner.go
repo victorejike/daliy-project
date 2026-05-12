@@ -1,3 +1,10 @@
+package main
+
+import (
+	"os"
+	"fmt"
+	"strings"
+
 func LoadBanner(filename string) (map[rune][]string, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
