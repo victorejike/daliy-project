@@ -1,26 +1,26 @@
-// banner.go
-package main
-
-import (
-	"os"
-	"strings"
-)
-
 func LoadBanner(filename string) (map[rune][]string, error) {
 	data, err := os.ReadFile(filename)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error reading %q banner", filename)
+	}
+
+	if len(data) == 0 {
+		return nil, fmt.Errorf("empty banner file")
 	}
 
 	lines := strings.Split(string(data), "\n")
 
 	banner := make(map[rune][]string)
 
-	ascii := 32
+	for ascii := 32; ascii <= 126; ascii++ {
+		start := (ascii-32)*9 + 1
+		end := start + 8
 
-	for i := 1; ascii <= 126 && i+7 < len(lines); i += 9 {
-		banner[rune(ascii)] = lines[i : i+8]
-		ascii++
+		if end > len(lines) {
+			return nil, fmt.Errorf("invalid banner content")
+		}
+
+		banner[rune(ascii)] = lines[start:end]
 	}
 
 	return banner, nil
